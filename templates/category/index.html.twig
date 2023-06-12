@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les catégories
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		<h1 class="mb-4 text-center">🎞️ Présentation de toutes les catégories 🎞️</h1>
+		<div class="row">
+			{% for category in categories %}
+				<div class="col-md-4 text-center text-dark">
+					<div class="card mb-4">
+						<div class="card-body">
+							<h2 class="card-title">{{ category.name }}</h2>
+							<a href="{{ path("category_show", { categoryName: category.name }) }}" class="btn btn-success">Voir les séries</a>
+						</div>
+					</div>
+				</div>
+			{% else %}
+				<p class="col text-muted">Cette catégorie n'a pas été trouvée.</p>
+			{% endfor %}
+
+			<a href="/">
+				Retour à l'accueil
+			</a>
+		{% endblock %}
